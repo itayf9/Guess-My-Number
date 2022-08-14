@@ -10,7 +10,20 @@ let isLose = false;
 const UNKNOWN = "?";
 
 document.querySelector(".check").addEventListener("click", function(){
-    
+    compareRes();
+});
+
+document.querySelector(".again").addEventListener("click", function () {
+    resetGame();
+});
+
+document.addEventListener("keypress", function (event) {
+    if (event.code === "Enter" ) {
+        compareRes();
+    }
+})
+
+function compareRes () {
     if (!isWin && !isLose) {
         const guessField = document.querySelector(".guess");
 
@@ -38,13 +51,7 @@ document.querySelector(".check").addEventListener("click", function(){
             loseGame();
         }
     }
-    
-    
-});
-
-document.querySelector(".again").addEventListener("click", function () {
-    resetGame();
-});
+}
 
 function loseGame () {
     isLose = true;
